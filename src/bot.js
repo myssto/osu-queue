@@ -5,6 +5,7 @@ const { Client, GatewayIntentBits } = require("discord.js");
 const loadCommands = require("./load-commands.js");
 const initBancho = require("./osu/osu.js");
 const UsersManager = require("./libs/UsersManager.js");
+const GuildConfigManager = require("./libs/GuildConfigManager.js");
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildEmojisAndStickers],
@@ -16,6 +17,7 @@ const client = new Client({
 loadCommands(client);
 initBancho(client);
 client.usrManager = new UsersManager(client);
+client.guildConfigManager = new GuildConfigManager(client);
 
 const eventsPath = path.join(__dirname, "events");
 const eventsFiles = fs.readdirSync(eventsPath).filter(f => f.endsWith(".js"));

@@ -6,12 +6,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
-      match_configs: {
-        type: DataTypes.JSON,
-      },
-      queues: {
-        type: DataTypes.JSON,
-      },
     },
     { timestamps: false },
   );

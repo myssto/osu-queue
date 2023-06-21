@@ -52,12 +52,12 @@ class UsersManager {
   };
 
   constructor(client) {
-    this.init(client);
+    // Store a reference to the discord client
+    this.client = client;
+    this.init();
   }
 
-  async init(client) {
-    // Store a reference to client
-    this.client = client;
+  async init() {
     // Store users
     const users = await Users.findAll();
     for (const user of users) {
@@ -98,6 +98,12 @@ class UsersManager {
     await interaction.followUp({ embeds: [baseEmbed] });
     // Add the discord id and auth string to available auths for the listener
     this.hanging_auth.set(authString, { "id": id, "authString": authString });
+  }
+
+  userExists(id) {
+    if (this.users.get(id)) return true;
+    if (this.users.find((v) => v.osu_id === id)) return true;
+    return false;
   }
 }
 
