@@ -1,11 +1,11 @@
-const { Events, EmbedBuilder } = require("discord.js");
+const { Events, codeBlock } = require("discord.js");
 
 module.exports = {
   name: Events.InteractionCreate,
   once: false,
   async execute(interaction) {
     if (!interaction.isChatInputCommand() && !interaction.isContextMenuCommand()) return;
-    const baseEmbed = new EmbedBuilder().setColor("#821a99");
+    const baseEmbed = interaction.client.defaultEmbed();
     // This will need to be changed to support button and menu commands
     if (!interaction.client.usrManager.userExists(interaction.user.id) && interaction.commandName !== "link") {
       baseEmbed.setDescription("You must link your osu! account before using this feature!");
@@ -21,9 +21,9 @@ module.exports = {
 
     try {
       await command.execute(interaction);
-    } catch (error) {
-      console.error(error);
-      baseEmbed.setDescription("There was an error while executing this command!");
+    } catch (e) {
+      console.error(e);
+      baseEmbed.setDescription("An error occured while executing this command:" + codeBlock(e.stderr));
       interaction.deffered
         ? interaction.followUp({ ephemeral: true, embeds: [baseEmbed] })
         : interaction.reply({ ephemeral: true, embeds: [baseEmbed] });

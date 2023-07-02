@@ -18,9 +18,11 @@ const sequelize = new Sequelize("database", "username", "password", {
 //   }
 // }
 require("./models/Guilds.js")(sequelize, Sequelize.DataTypes);
+require("./models/Mappools.js")(sequelize, Sequelize.DataTypes);
+require("./models/Maps.js")(sequelize, Sequelize.DataTypes);
 require("./models/Matches.js")(sequelize, Sequelize.DataTypes);
-require("./models/Queues.js")(sequelize, Sequelize.DataTypes);
 require("./models/QueuePlayers.js")(sequelize, Sequelize.DataTypes);
+require("./models/Queues.js")(sequelize, Sequelize.DataTypes);
 require("./models/Users.js")(sequelize, Sequelize.DataTypes);
 const force = process.argv.includes("--force") || process.argv.includes("-f");
 

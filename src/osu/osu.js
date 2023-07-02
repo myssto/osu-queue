@@ -9,7 +9,6 @@ module.exports = client => {
     password: process.env.OSU_IRC_PASSWORD,
     apiKey: process.env.OSU_API_KEY,
   });
-
   loadCommands(banchoClient);
   client.banchoClient = banchoClient;
 
@@ -25,10 +24,5 @@ module.exports = client => {
     } else {
       banchoClient.on(event.name, (arg) => event.execute(client, arg));
     }
-  }
-  try {
-    banchoClient.connect();
-  } catch (e) {
-    console.error(e);
   }
 };

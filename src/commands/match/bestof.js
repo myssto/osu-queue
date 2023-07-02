@@ -3,5 +3,4 @@
 
 // ARG
 // (req) number: int
-// vote: bool (Whether or not players can vote on this)
-// eligible_voters: str [All, Captains] = All
+// enforce: bool (Whether or not players can vote on this)

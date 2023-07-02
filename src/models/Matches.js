@@ -4,14 +4,26 @@ module.exports = (sequelize, DataTypes) => {
     {
       mp_id: {
         type: DataTypes.STRING,
-        primaryKey: true,
+        allowNull: false,
       },
-      guild_id: DataTypes.STRING,
-      queue_id: DataTypes.STRING,
+      guild_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      queue_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      match_status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      mp_log: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       match_config: DataTypes.JSON,
-      match_status: DataTypes.STRING,
-      mp_log: DataTypes.TEXT,
-      mp_pswd: DataTypes.TEXT,
+      match_data: DataTypes.JSON,
     },
     { timestamps: false },
   );

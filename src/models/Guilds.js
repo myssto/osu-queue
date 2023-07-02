@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         primaryKey: true,
       },
+      staff_roles: { type: DataTypes.STRING },
+      banned_users: { type: DataTypes.STRING },
     },
     { timestamps: false },
   );

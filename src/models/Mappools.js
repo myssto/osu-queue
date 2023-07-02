@@ -1,21 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
-    "queues",
+    "mappools",
     {
-      guild_id: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      is_active: {
-        type: DataTypes.BOOLEAN,
+      guild_id: {
+        type: DataTypes.STRING,
         allowNull: false,
-        defaultValue: true,
       },
-      queue_config: {
+      pool_data: {
         type: DataTypes.JSON,
         allowNull: false,
       },

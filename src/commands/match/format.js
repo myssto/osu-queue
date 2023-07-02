@@ -3,3 +3,4 @@
 
 // ARG
 // format: str [Team VS, FFA, Battle Royale]
+// enforce: bool

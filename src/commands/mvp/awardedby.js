@@ -2,4 +2,4 @@
 // Set how mvps are awarded
 
 // ARG
-// (req) type: str [Vote, Match Cost]
+// (req) type: str [Vote, Match Cost, AVG Score]

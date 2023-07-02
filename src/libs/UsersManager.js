@@ -31,6 +31,7 @@ class UsersManager {
       if (!discord_user) return bailOut(2);
       // Add the users ids to our db and local
       const newUser = await Users.create({ "discord_id": discord_id, "osu_id": banchoUser.id });
+      newUser.banchoUser = banchoUser;
       this.users.set(newUser.discord_id, newUser);
       // Confirm the auth with user on bancho and discord
       const baseEmbed = new EmbedBuilder()
@@ -61,6 +62,7 @@ class UsersManager {
     // Store users
     const users = await Users.findAll();
     for (const user of users) {
+      user.banchoUser = await this.client.banchoClient.getUserById(user.osu_id);
       this.users.set(user.discord_id, user);
     }
     // Start listening for events
@@ -85,9 +87,8 @@ class UsersManager {
     }
     const curUser = this.users.get(id);
     if (curUser) {
-      const banchoUser = await banchoClient.getUserById(curUser.osu_id);
       baseEmbed.setDescription(`Your Discord account is already linked to the osu account:
-       \`${banchoUser.ircUsername}\``);
+       \`${curUser.banchoUser.ircUsername}\``);
       return interaction.followUp({ embeds: [baseEmbed] });
     }
 

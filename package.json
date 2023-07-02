@@ -5,7 +5,7 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node src/bot.js --no-warning",
-    "deploy": "node src/deploy-commands.js",
+    "deploy": "node src/deploy-commands.js --no-warning",
     "init-db": "node src/db-init.js"
   },
   "author": "myssto",
